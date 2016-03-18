@@ -1,0 +1,3 @@
+pathology_homepage:
+    path:     /
+    defaults: { _controller: PathologyBundle:Default:index }
