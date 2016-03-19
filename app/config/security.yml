@@ -4,8 +4,26 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, pathology_db]
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    tkuldeep:
+                        password: $2a$12$myMejx4tJHayQIgraRNaaude4Pk2jtfDGkcjYqbDzYqIutRLm/2HG
+                        roles: 'ROLE_ADMIN'
+        pathology_db:
+            entity:
+                class: PathologyBundle:User
+                property: username
+
+    encoders:
+        PathologyBundle\Entity\User:
+            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,10 +33,20 @@ security:
 
         main:
             anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            logout:
+                path:   /logout
+                target: /
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/operator, roles: [ROLE_OPERATOR, ROLE_ADMIN] }
+        - { path: ^/patient, roles: [ROLE_PATIENT, ROLE_OPERATOR, ROLE_ADMIN] }

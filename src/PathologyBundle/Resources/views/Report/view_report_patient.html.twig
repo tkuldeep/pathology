@@ -1,0 +1,7 @@
+{% extends 'PathologyBundle::patient_dashboard.html.twig' %}
+
+{% block title %}Pathlogy Lab{% endblock %}
+
+{% block body %}
+{{ include('PathologyBundle:Report:generate_report.html.twig') }}
+{% endblock %}

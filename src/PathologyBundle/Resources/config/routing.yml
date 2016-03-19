@@ -1,3 +1,65 @@
 pathology_homepage:
     path:     /
     defaults: { _controller: PathologyBundle:Default:index }
+
+create_operator:
+    path:     /admin/createOperator
+    defaults: { _controller: PathologyBundle:Admin:createOperator }
+
+view_operators:
+    path:     /admin/viewOperators
+    defaults: { _controller: PathologyBundle:Admin:viewOperators }
+
+create_pathology_test:
+    path:     /admin/createPathologyTest
+    defaults: { _controller: PathologyBundle:Admin:createPathologyTest }
+
+view_pathology_tests:
+    path:     /admin/viewPathologyTests
+    defaults: { _controller: PathologyBundle:Admin:viewPathologyTests }
+
+register_patient:
+    path:     /operator/registerPatient
+    defaults: { _controller: PathologyBundle:Operator:registerPatient }
+
+view_patients:
+    path:     /operator/viewPatients
+    defaults: { _controller: PathologyBundle:Operator:viewPatients }
+
+edit_patient:
+    path:     /operator/patients/{patientId}/edit
+    defaults: { _controller: PathologyBundle:Operator:editPatient }
+
+delete_patient:
+    path:     /operator/patients/{patientId}/delete
+    defaults: { _controller: PathologyBundle:Operator:deletePatient }
+
+create_report:
+    path:     /operator/patients/{patientId}/createReport
+    defaults: { _controller: PathologyBundle:Report:createReport }
+
+edit_report:
+    path:     /operator/patients/{patientId}/reports/{reportId}/edit
+    defaults: { _controller: PathologyBundle:Report:editReport }
+
+delete_report:
+    path:     /operator/patients/{patientId}/reports/{reportId}/delete
+    defaults: { _controller: PathologyBundle:Report:deleteReport }
+
+view_reports:
+    path:     /patient/{patientId}/viewReports
+    defaults: { _controller: PathologyBundle:Report:viewReports }
+
+view_report:
+    path:     /patient/{patientId}/reports/{reportId}/view
+    defaults: { _controller: PathologyBundle:Report:viewReport }
+
+export_report_to_pdf:
+    path:     /patient/{patientId}/reports/{reportId}/exportReportToPdf
+    defaults: { _controller: PathologyBundle:Report:exportReportToPdf }
+
+mail_report_to_pdf:
+    path:     /patient/{patientId}/reports/{reportId}/mailReportToPdf
+    defaults: { _controller: PathologyBundle:Report:mailReportToPdf }
+
+

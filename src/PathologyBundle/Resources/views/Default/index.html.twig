@@ -1,1 +1,14 @@
-Hello World!
+{% extends "::base.html.twig" %}
+{% block user %}
+  Welcome,
+{% endblock %}
+
+{% block menu %}
+  <ul>
+      <li class="login">
+        <a href="/login">Please Login</a>
+      </li>
+  </ul>
+{% endblock %}
+
+

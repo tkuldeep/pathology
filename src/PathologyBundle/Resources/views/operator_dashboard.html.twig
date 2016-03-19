@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block user %}
+  Welcome, {{ app.user.username }}
+{% endblock %}
+
+{% block menu %}
+<ul>
+    <li class="add-patient">
+      <a href="/operator/registerPatient">Add Patient</a>
+    </li>
+    <li class="view-patients">
+      <a href="/operator/viewPatients">View Patients</a>
+    </li>
+    <li class="logout">
+      <a href="/logout">Logout</a>
+    </li>
+</ul>
+{% endblock %}
+

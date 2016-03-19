@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block user %}
+  Welcome, {{ app.user.username }}
+{% endblock %}
+
+
+{% block menu %}
+<ul>
+    <li class="view-reports">
+      <a href="/patient/{{ app.user.id }}/viewReports">View Reports</a>
+    </li>
+    <li class="logout">
+      <a href="/logout">Logout</a>
+    </li>
+</ul>
+{% endblock %}
+

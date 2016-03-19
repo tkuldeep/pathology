@@ -1,0 +1,41 @@
+{% extends 'PathologyBundle::operator_dashboard.html.twig' %}
+
+{% block title %}Create Report for Patient{% endblock %}
+
+{% block body %}
+
+    <p>Patient Name: <b>{{patientDetails.name}}</b></p>
+    <p>Email: <b>{{patientDetails.email}}</b></p>
+    <p>Phone Number: <b>{{patientDetails.phone}}</b></p>
+
+    {{ form_start(form) }}
+
+    <p><h2>Tests </h2></p>
+    <table border=1>
+        <tr>
+            <th>Name</th>
+            <th>Referance</th>
+            <th>Unit</th>
+            <th>Day1</th>
+            <th>Day2</th>
+            <th>Day3</th>
+        </tr>
+        {% for test in patientDetails.tests %}
+           {% set input1 = "day1_" ~ test.id %}
+           {% set input2 = "day2_" ~ test.id %}
+           {% set input3 = "day3_" ~ test.id %}
+            <tr>
+                <td>{{ test.name }}</td>
+                <td>{{ test.referenceValue }}</td>
+                <td>{{ test.unit }}</td>
+                <td>{{ form_widget(attribute(form, input1)) }}</td>
+                <td>{{ form_widget(attribute(form, input2)) }}</td>
+                <td>{{ form_widget(attribute(form, input3)) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <button type="submit">Create</button>
+    {{ form_end(form) }}
+
+{% endblock %}

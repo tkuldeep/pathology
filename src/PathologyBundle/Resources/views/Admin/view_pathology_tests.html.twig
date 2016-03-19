@@ -1,0 +1,32 @@
+{% extends 'PathologyBundle::admin_dashboard.html.twig' %}
+
+{% block title %}List of Pathlogy Lab tests{% endblock %}
+
+{% block body %}
+    <table border=1>
+        <tr>
+            <th>Pathlogy Test</th>
+            <th>Reference Value</th>
+            <th>Unit</th>
+        </tr>
+        {% for pathlogyTest in pathlogyTests %}
+            <tr>
+                <td>{{ pathlogyTest.name }}</td>
+                <td>{{ pathlogyTest.referenceValue }}</td>
+                <td>{{ pathlogyTest.unit }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
