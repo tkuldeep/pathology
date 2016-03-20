@@ -343,19 +343,13 @@ class ReportController extends Controller
 
         // Load current user and redirect to appropriate template on the basis of role.
         $current_user = $this->get('security.token_storage')->getToken()->getUser();
+        $email['to'] = $current_user->getEmail();
+        $email['body'] = $this->renderView('PathologyBundle:Report:generate_report.html.twig', array(
+            'reportsData' => $reports_data,
+            'headers' => $headers
+        ));
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom($from)
-            ->setTo($current_user->getEmail())
-            ->setBody(
-                $this->renderView('PathologyBundle:Report:generate_report.html.twig', array(
-                    'reportsData' => $reports_data,
-                    'headers' => $headers
-                )),
-                'text/html'
-            );
-        $this->get('mailer')->send($message);
+        $this->get('pathology_emailsender')->sendEmail($email);
 
         return $this->redirectToRoute('view_reports', array(
             'patientId' => $patient_id,
