@@ -5,6 +5,7 @@ namespace PathologyBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class UserPatientType extends AbstractType
 {
@@ -19,7 +20,7 @@ class UserPatientType extends AbstractType
             ->add('fname', null, array('label' => 'First Name'))
             ->add('lname', null, array('label' => 'Last Name'))
             ->add('password')
-            ->add('email','email')
+            ->add('email', EmailType::class)
             ->add('phoneNumber')
         ;
     }

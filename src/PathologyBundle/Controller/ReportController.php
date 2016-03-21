@@ -50,7 +50,7 @@ class ReportController extends Controller
         // Handle the submit (will only happen on POST).
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $reports_data = array();
             // Prepare reports data array for storing in Report entity.
             foreach ($tests as $test) {
                 $test_id = $test->getId();
@@ -248,7 +248,7 @@ class ReportController extends Controller
         // Handle the submit (will only happen on POST).
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $reports_data = array();
             // Update patient's tests reports with new values.
             foreach ($tests as $test) {
                 $test_id = $test->getId();

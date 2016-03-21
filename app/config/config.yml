@@ -69,5 +69,5 @@ swiftmailer:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /tmp/
+        binary:     /usr/local/bin/wkhtmltopdf
         options:    []

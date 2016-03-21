@@ -2,11 +2,11 @@
 
 namespace PathologyBundle\Tests\Form;
 
-use PathologyBundle\Form\UserOperatorType;
+use PathologyBundle\Form\UserPatientType;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Faker;
 
-class UserOperatorTypeTest extends TypeTestCase
+class UserPatientTypeTest extends TypeTestCase
 {
     public function testSubmitValidData()
     {
@@ -21,7 +21,7 @@ class UserOperatorTypeTest extends TypeTestCase
         );
 
         // Verify if the FormType compiles.
-        $form = $this->factory->create(UserOperatorType::class);
+        $form = $this->factory->create(UserPatientType::class);
 
         // Verify none of your data transformers used by the form failed
         $form->submit($formData);
