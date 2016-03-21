@@ -66,7 +66,7 @@ class User implements UserInterface, \Serializable
     private $pathologyTest;
 
     /**
-     * @ORM\OneToMany(targetEntity="Report", mappedBy="patient")
+     * @ORM\OneToMany(targetEntity="Report", mappedBy="patient", cascade={"persist", "remove"})
      */
     protected $reports;
 
